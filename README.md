@@ -1,2 +1,3 @@
 # enginator_kvakozyabra_part2
 <p>This code does take as an input the topic of a fairy tale and number of pages.<br><br>It than prompts the openai API with a request to write a n paragraph text, based on the user's input. This text is cached into an array and the programm sends one more prompt to make the conclusion out of each paragraph. <br><br> Images are generated dynamically as the user progresses though the fairy tale. This is done to minimise the loading time.
+Expect a brief wait at the start of run of the program, since it comminucates with two API's at the start of the program to validate the connection.
