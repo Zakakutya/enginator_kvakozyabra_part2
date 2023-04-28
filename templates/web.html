@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fairy Tale</title>
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+</head>
+<body>
+    <div>
+    <button type="button" id="theme-toggle">Switch Theme</button>
+	<input type="text" name="input_field" id="input_field" maxlength="100" placeholder="Enter your book topic">
+    <label id="num_pages">Enter number of pages</label>
+    
+    <input type="number" name="length" id="length" min="1" max="20" >
+	<button type="submit" id="submit_button">Submit</button>
+    <button type="button" id="Back">Back</button>
+    <button type="button" id="Next">Next</button>
+    <img src="static/images/1.jpg" id="image" width="500" height="500">
+
+    <p id="result"></p>
+    <p id="page_number"></p>
+    </div>
+	<script>
+        const themeToggle = document.getElementById("theme-toggle");
+        const body = document.body;
+        themeToggle.addEventListener("click", function() {
+          body.classList.toggle("dark-mode");
+        });
+		document.getElementById("input_field").style.display = "block";
+        document.getElementById("num_pages").style.display = "block";
+        document.getElementById("submit_button").style.display = "block";
+        document.getElementById("length").style.display = "block";
+        document.getElementById("Next").style.display = "none";
+        document.getElementById("Back").style.display = "none";
+        document.getElementById("result").style.display = "none";
+        document.getElementById("image").style.display = "none";
+        document.getElementById("page_number").style.display = "none";
+
+        const Submit = document.getElementById("submit_button");
+        const length = document.getElementById("length");
+        const Next = document.getElementById("Next");
+        const Back = document.getElementById("Back");
+        const input = document.getElementById("input_field");
+        const result = document.getElementById("result");
+        const image = document.getElementById("image");
+        const page = document.getElementById("page_number");
+        const pattern = "{0,100}$";
+        const num_pages = document.getElementById("num_pages");
+
+        Submit.addEventListener("click", function() {
+            var title = input.value;
+            var length_value = length.value;
+            
+            num_pages.style.display = "none";
+            document.getElementById("input_field").style.display = "none";
+            document.getElementById("submit_button").style.display = "none";
+            document.getElementById("length").style.display = "none";
+                fetch('/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        title: title,
+                        length: length_value
+                    })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    result.innerHTML = data.result;
+                    if(result != "") {
+                        
+                        document.getElementById("Next").style.display = "block";
+                        document.getElementById("result").style.display = "block";
+                    }
+                    
+                    image.style.display = "block";
+                    page_number.style.display = "block";
+                    image.src = data.image;
+                    page_number.innerHTML = data.page;
+                });
+            
+        });
+
+        Next.addEventListener("click", function() {
+            var title = input.value;
+            var length_value = length.value;
+            fetch('/Next', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: '+',
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                result.innerHTML = data.result;
+                image.src = data.image;
+                var pagenum = data.page;
+                page_number.innerHTML = data.page;
+                var status = data.active;
+                if(status == "False") {
+                    document.getElementById("Next").style.display = "inline-block";
+                    document.getElementById("Next").setAttribute("disabled", true);
+                } else {
+                    document.getElementById("Next").style.display = "inline-block";
+                    document.getElementById("Next").removeAttribute("disabled");
+                }
+                if (pagenum <= 0) {
+                    // make button visible but not clickable
+                    document.getElementById("Back").style.display = "inline-block";
+                    document.getElementById("Back").setAttribute("disabled", true);
+                } else {
+                    document.getElementById("Back").style.display = "inline-block";
+                    document.getElementById("Back").removeAttribute("disabled");
+                }
+            })
+            
+            
+        });
+        Back.addEventListener("click", function() {
+            var title = input.value;
+            var length_value = length.value;
+            fetch('/Back', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: '-',
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                result.innerHTML = data.result;
+                image.src = data.image;
+                var pagenum = data.page;
+                page_number.innerHTML = data.page;
+                if (pagenum <= 0) {
+                    // make button visible but not clickable
+                    document.getElementById("Back").style.display = "inline-block";
+                    document.getElementById("Back").setAttribute("disabled", true);
+                } else {
+                    document.getElementById("Back").style.display = "inline-block";
+                    document.getElementById("Back").removeAttribute("disabled");
+                }
+            });
+        });
+        
+
+	</script>
+</body>
+</html>

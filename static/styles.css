@@ -1,0 +1,178 @@
+#theme-toggle {
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 24px;
+    color: #fff;
+    background-color: #FF9F1C;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+#theme-toggle:hover {
+    background-color: #35322d;
+  }
+/* Light mode styles */
+#length {
+    width: 50px;
+    height: 30px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    padding: 5px;
+  }
+#num_pages {
+    font-size: 24px;
+}
+body div {
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+#input_field {
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 24px;
+    background-color: #fff;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  #submit_button {
+    display: block;
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    font-size: 24px;
+    color: #fff;
+    background-color: #FF9F1C;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  #submit_button:hover {
+    background-color: #FFB703;
+  }
+  
+  #Next,
+  #Back {
+    display: none;
+    margin-right: 10px;
+    padding: 10px 20px;
+    font-size: 24px;
+    color: #fff;
+    background-color: #F94144;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  #Next:hover,
+  #Back:hover {
+    background-color: #F3722C;
+  }
+  
+  #result {
+    display: none;
+    margin-top: 20px;
+    padding: 10px;
+    font-size: 24px;
+    color: #fff;
+    background-color: #43AA8B;
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Dark mode styles */
+  /* CSS for dark mode */
+.dark-mode #length {
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #fff;
+  }
+  
+  body.dark-mode #input_field {
+    background-color: #222;
+    color: #fff;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  body.dark-mode #submit_button {
+    background-color: #FF9F1C;
+  }
+  
+  body.dark-mode #submit_button:hover {
+    background-color: #FFB703;
+  }
+  
+  body.dark-mode #Next,
+  body.dark-mode #Back {
+    background-color: #F94144;
+  }
+  
+  body.dark-mode #Next:hover,
+  body.dark-mode #Back:hover {
+    background-color: #F3722C;
+  }
+  
+  body.dark-mode #result {
+    background-color: #43AA8B;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  }
+  /* Dark mode styles */
+body.dark-mode {
+    background-color: #222;
+    color: #fff;
+  }
+  
+  body.dark-mode #input_field {
+    background-color: #222;
+    color: #fff;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  body.dark-mode #submit_button {
+    background-color: #FF9F1C;
+  }
+  
+  body.dark-mode #submit_button:hover {
+    background-color: #FFB703;
+  }
+  
+  body.dark-mode #Next,
+  body.dark-mode #Back {
+    background-color: #F94144;
+  }
+  
+  body.dark-mode #Next:hover,
+  body.dark-mode #Back:hover {
+    background-color: #F3722C;
+  }
+  
+  body.dark-mode #result {
+    background-color: #43AA8B;
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1);
+  }
+  
+  .loader {
+    border: 8px solid #f3f3f3; /* Light grey */
+    border-top: 8px solid #3498db; /* Blue */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 2s linear infinite;
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
